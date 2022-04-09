@@ -36,7 +36,7 @@ func SetupRouter() *gin.Engine {
 	r.LoadHTMLGlob("assets/*")
 
 	r.GET("/hello", helloHandler)
-
+	//r.GET("/p/:input", controllers.Pass_data)
 	r.GET("/encoder", controllers.Ecoding_url)
 	r.POST("/upload", controllers.UploadImage)
 	r.GET("/index", func(c *gin.Context) {
