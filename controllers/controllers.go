@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"net/http"
 	"shorten/middlewares"
 	"time"
@@ -20,9 +19,9 @@ func Ecoding_url(c *gin.Context) {
 func UploadImage(c *gin.Context) {
 	file, _ := c.FormFile("file")
 	//name := c.PostForm("user_id")
-	data, _ := file.Open()
+
 	//filename := file.Filename
-	header := file.Header
+	//header := file.Header
 
 	SavePath = "./image/" + time.Now().Format("20060102150405") + file.Filename
 	setPath(&SavePath)
@@ -32,15 +31,14 @@ func UploadImage(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, gin.H{"result": "上傳成功\n"})
 	}
-	fmt.Println(SavePath)
+	//fmt.Println(SavePath)
 
 	//	c.SaveUploadedFile(file, "tmp/"+filename) // save file to tmp folder in current directory
 
 	//filename := name + ".png"
 
-	fmt.Println(header)
-	fmt.Printf("type image:=%T\n", data)
-	fmt.Printf("type image:=%T\n", file)
+	//fmt.Println(header)
+
 	Pass_data(c, SavePath)
 	//c.Writer.WriteString(string(data))
 }

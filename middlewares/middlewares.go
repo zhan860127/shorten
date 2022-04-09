@@ -45,7 +45,7 @@ func Dump_to_python(s string) string {
 
 	str, _ := PythonRepr(testdataPy)
 
-	fmt.Printf("%T", s)
+	fmt.Printf("the result :" + str)
 
 	defer testdataPy.DecRef()
 
