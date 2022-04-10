@@ -17,6 +17,7 @@ func Ecoding_url(c *gin.Context) {
 }
 
 func UploadImage(c *gin.Context) {
+
 	file, _ := c.FormFile("file")
 	//name := c.PostForm("user_id")
 

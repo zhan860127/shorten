@@ -1,0 +1,3 @@
+[submodule "SSG"]
+	path = SSG
+	url = https://github.com/Ratherman/SSG
