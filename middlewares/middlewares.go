@@ -28,10 +28,16 @@ func Dump_to_python(s string) string {
 	//pathStr, _ := PythonRepr(path)
 	//fmt.Println(pathStr)
 	concurrencyFile := python3.PyImport_ImportModule("cat_dog_classifier")
+	if concurrencyFile ==nil{
 
+	fmt.Println(PythonRepr(path))
+	panic("not found concurrency\n\n\n\n")
+	
+	}
 	oDict := python3.PyModule_GetDict(concurrencyFile)
 	genTestdata := python3.PyDict_GetItemString(oDict, "Train")
 
+	
 	if !(genTestdata != nil && python3.PyCallable_Check(genTestdata)) {
 		// raise error
 	}
