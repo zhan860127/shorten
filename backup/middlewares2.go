@@ -22,13 +22,15 @@ func Dump_to_python(s string) string {
 	//pathStr, _ := pythonRepr2(path)
 	//log.Println("before add path is " + pathStr)
 	//python3.PyList_Insert(path, 0, python3.PyUnicode_FromString("//middlewares//"))
+	python3.PyList_Insert(path, 0, python3.PyUnicode_FromString(" "))
 	dir, _ := os.Getwd()
+	python3.PyList_Insert(path, 0, python3.PyUnicode_FromString("/.py"))
+	python3.PyList_Insert(path, 0, python3.PyUnicode_FromString("/home/ubuntu/anaconda3/envs/Golang_AI/lib/python3.7/site-packages/cv2"))
 	//dir = dir + "\\middlewares\\"
 	python3.PyList_Insert(path, 0, python3.PyUnicode_FromString(base.Python_dir))
 	//fmt.Println(dir)
-	//pathStr, _ := PythonRepr(path)
 	python3.PyList_Insert(path, 0, python3.PyUnicode_FromString(dir))
-	python3.PyList_Insert(path, 0, python3.PyUnicode_FromString("/home/ubuntu/anaconda3/envs/Golang_AI/lib/python3.7/site-packages/cv2"))
+	//pathStr, _ := PythonRepr(path)
 	//fmt.Println(pathStr)
 	concurrencyFile := python3.PyImport_ImportModule("cat_dog_classifier")
 	fmt.Println(PythonRepr(path))
@@ -39,7 +41,7 @@ func Dump_to_python(s string) string {
 	
 	}
 	oDict := python3.PyModule_GetDict(concurrencyFile)
-	genTestdata := python3.PyDict_GetItemString(oDict, "train")
+	genTestdata := python3.PyDict_GetItemString(oDict, "Train")
 	
 	if !(genTestdata != nil && python3.PyCallable_Check(genTestdata)) {
 		// raise error
